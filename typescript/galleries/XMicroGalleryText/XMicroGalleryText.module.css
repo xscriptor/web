@@ -1,0 +1,148 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+  }
+  
+  .reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.textContent {
+  flex: 1;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  color: var(--foreground);
+}
+
+.textContent.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.textLeft {
+  text-align: left;
+}
+
+.textRight {
+  text-align: right;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.textContent p,
+.textContent div,
+.textContent span,
+.textContent em,
+.textContent strong,
+.textContent a {
+  text-align: inherit;
+  max-width: none;
+  margin-left: unset;
+  margin-right: unset;
+}
+
+.gallery {
+  flex: 1.5;
+  width: 100%;
+}
+
+.artisticGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 380px 220px;
+  gap: 1rem;
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  opacity: 0;
+  transform: translateY(50px) scale(0.95);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
+}
+
+.imageWrapper.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.imageWrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.previewImage {
+  object-fit: cover;
+}
+
+.artisticGrid .artistic1 .previewImage {
+  object-position: center top;
+  transform: translateY(0);
+}
+
+.artistic1 {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+  transition-delay: 0.2s;
+}
+
+.artistic2 {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  transition-delay: 0.3s;
+}
+
+.artistic3 {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+  transition-delay: 0.4s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .artisticGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 240px 180px 180px;
+  }
+  
+  .artistic1,
+  .artistic2,
+  .artistic3 {
+    grid-column: 1 / 2;
+  }
+  
+  .artistic1 {
+    grid-row: 1 / 2;
+  }
+  
+  .artistic2 {
+    grid-row: 2 / 3;
+  }
+  
+  .artistic3 {
+    grid-row: 3 / 4;
+  }
+}
+
+@media (max-width: 480px) {
+  .artisticGrid {
+    grid-template-rows: 200px 140px 140px;
+  }
+}

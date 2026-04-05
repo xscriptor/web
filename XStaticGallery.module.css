@@ -1,0 +1,91 @@
+.galleryContainer {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1rem 1rem 3rem;
+}
+
+.galleryTitle {
+  font-size: 1.875rem;
+  text-align: right;
+  color: var(--primary);
+  margin-bottom: 3rem;
+  opacity: 0.8;
+}
+
+/* Masonry via CSS columns */
+.masonryGrid {
+  gap: 1rem;
+}
+
+.masonryItem {
+  break-inside: avoid;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, box-shadow 0.3s ease;
+}
+
+.masonryItem.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.masonryItem:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.galleryImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease-out;
+}
+
+.masonryItem:hover .galleryImage {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s ease;
+  pointer-events: none;
+}
+
+.masonryItem:hover .imageOverlay {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Column count via CSS custom property */
+.cols1 { columns: 1; }
+.cols2 { columns: 2; }
+.cols3 { columns: 3; }
+.cols4 { columns: 4; }
+.cols5 { columns: 5; }
+
+/* Responsive overrides */
+@media (max-width: 1280px) {
+  .cols4, .cols5 { columns: 3; }
+}
+
+@media (max-width: 768px) {
+  .cols3, .cols4, .cols5 { columns: 2; }
+}
+
+@media (max-width: 640px) {
+  .cols2, .cols3, .cols4, .cols5 { columns: 1; }
+}

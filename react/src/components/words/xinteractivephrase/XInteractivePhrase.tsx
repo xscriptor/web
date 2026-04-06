@@ -5,10 +5,11 @@ import styles from "./XInteractivePhrase.module.css";
 
 export interface WordConfig {
   text: string;
-  type: "normal" | "underline" | "button" | "blur1" | "blur2";
+  // Solo comportamientos de interacción
+  type: "normal" | "underline" | "button" | "blur1" | "blur2"; 
   breakAfter?: boolean;
-  italic?: boolean;
-  bold?: boolean; // Nueva propiedad para soportar <strong>
+  italic?: boolean; // Esto controla el <em>
+  bold?: boolean;   // Esto controla el <strong>
 }
 
 interface XInteractivePhraseProps {
@@ -45,6 +46,7 @@ export default function XInteractivePhrase({
           let clickHandler: (() => void) | undefined = undefined;
           let keyHandler: ((e: KeyboardEvent<HTMLSpanElement>) => void) | undefined = undefined;
 
+          // Gestión de lógica por tipo
           if (word.type === "underline") {
             dynamicClass = styles.underlineEffect;
             clickHandler = () => handleAction("underline");
@@ -62,7 +64,7 @@ export default function XInteractivePhrase({
             dynamicClass = `${styles.blurEffect} ${active2 ? styles.isVisible : styles.isHidden}`;
           }
 
-          // Lógica de anidación: bold > italic > text
+          // Renderizado del contenido con estilos combinables
           let content: React.ReactNode = word.text;
           if (word.italic) content = <em>{content}</em>;
           if (word.bold) content = <strong>{content}</strong>;

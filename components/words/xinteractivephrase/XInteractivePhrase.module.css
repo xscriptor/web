@@ -1,0 +1,91 @@
+.container {
+  padding: 2rem;
+  color: var(--text);
+  max-width: 800px;
+}
+
+.title {
+  font-size: 2rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Responsividad */
+@media (min-width: 768px) {
+  .title { font-size: 3.5rem; }
+}
+
+/* Efecto de subrayado (Activador 1) */
+.underlineEffect {
+  position: relative;
+  cursor: pointer;
+  color: var(--accent);
+  transition: color 0.3s ease;
+}
+
+.underlineEffect::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    currentColor 2px,
+    currentColor 4px
+  );
+  transition: opacity 0.3s ease;
+}
+
+.underlineEffect:hover::after {
+  opacity: 0;
+}
+
+/* Efecto de botón (Activador 2) */
+.buttonEffect {
+  display: inline-block;
+  padding: 0.1em 0.5em;
+  border: 2px dashed currentColor;
+  border-radius: 50px;
+  cursor: pointer;
+  color: var(--accent);
+  transition: all 0.3s ease;
+}
+
+.buttonEffect:hover {
+  background: currentColor;
+  color: var(--bg);
+}
+
+/* Efectos de desenfoque */
+.blurEffect {
+  display: inline-block;
+  transition: filter 0.5s ease, opacity 0.5s ease;
+}
+
+.isVisible {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.isHidden {
+  filter: blur(8px);
+  opacity: 0.5;
+}
+
+/* Salto de línea */
+.lineBreak {
+  display: block;
+  height: 0.5rem;
+  content: "";
+}
+
+/* Accesibilidad */
+.underlineEffect:focus-visible,
+.buttonEffect:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}

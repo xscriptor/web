@@ -22,7 +22,7 @@ const COLUMN_CLASSES: Record<number, string> = {
   5: styles.cols5,
 };
 
-export default function XGallery({ images, columns = 4, title }: GalleryProps) {
+export default function XStaticGallery({ images, columns = 4, title }: GalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

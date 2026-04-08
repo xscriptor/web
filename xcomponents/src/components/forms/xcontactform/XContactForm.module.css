@@ -1,0 +1,185 @@
+/* Tamaños dinámicos base */
+.wrapper {
+    --input-padding: .65rem .9rem;
+    --font-size: 16px;
+    --form-gap: 1.25rem;
+    --row-gap: .85rem;
+    --field-gap: .45rem;
+    --button-min-width: 140px;
+    --label-color: inherit;
+    --wrapper-bg-color: transparent;
+    --wrapper-border-color: transparent;
+    --wrapper-border-width: 0px;
+    --wrapper-border-style: solid;
+    --wrapper-radius: .5rem;
+    --field-border-color: var(--border, #ccc);
+    --field-border-width: 1px;
+    --field-border-style: solid;
+    --field-radius: .5rem;
+    --btn-bg-color: var(--bg, #333);
+    --btn-text-color: var(--text, #fff);
+    --btn-border-color: transparent;
+    --btn-border-width: 0px;
+    --btn-border-style: solid;
+    --btn-radius: .5rem;
+    --btn-alignment: flex-start;
+    --btn-hover-bg-color: var(--btn-bg-color);
+    --btn-hover-text-color: var(--btn-text-color);
+    --btn-hover-border-color: var(--btn-border-color);
+    --status-ok-color: #1fa37a;
+    --status-error-color: #d16a6a;
+    
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    background-color: var(--wrapper-bg-color);
+    border: var(--wrapper-border-width) var(--wrapper-border-style) var(--wrapper-border-color);
+    border-radius: var(--wrapper-radius);
+}
+
+/* Modificadores de tamaño */
+.small {
+    --input-padding: .35rem .55rem;
+    --font-size: 13px;
+    --form-gap: .75rem;
+    --row-gap: .6rem;
+    --field-gap: .3rem;
+    --button-min-width: 118px;
+}
+.medium {
+    --input-padding: .5rem .7rem;
+    --font-size: 15px;
+    --form-gap: 1rem;
+    --row-gap: .7rem;
+    --field-gap: .4rem;
+    --button-min-width: 130px;
+}
+.large {
+    --input-padding: 1rem 1.2rem;
+    --font-size: 18px;
+    --form-gap: 1.5rem;
+    --row-gap: 1rem;
+    --field-gap: .5rem;
+    --button-min-width: 150px;
+}
+
+.form {
+    display: grid;
+    gap: var(--form-gap);
+    max-width: 100%;
+}
+
+/* Layouts */
+.row {
+    display: grid;
+    gap: var(--row-gap);
+}
+
+.grid .row {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.vertical .row {
+    grid-template-columns: 1fr;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--field-gap);
+}
+
+.field label {
+    font-size: calc(var(--font-size) - 2px);
+    font-weight: 500;
+    color: var(--label-color);
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: var(--input-padding);
+    border: var(--field-border-width) var(--field-border-style) var(--field-border-color);
+    border-radius: var(--field-radius);
+    font-size: var(--font-size);
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: #888;
+}
+
+.buttoncontainer {
+    display: flex;
+    justify-content: var(--btn-alignment);
+    margin-top: 0.25rem;
+}
+
+.button {
+    padding: var(--input-padding);
+    border-radius: var(--btn-radius);
+    border: var(--btn-border-width) var(--btn-border-style) var(--btn-border-color);
+    background-color: var(--btn-bg-color);
+    color: var(--btn-text-color);
+    cursor: pointer;
+    font-size: var(--font-size);
+    font-weight: 600;
+    min-width: var(--button-min-width);
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.button:hover {
+    background-color: var(--btn-hover-bg-color);
+    color: var(--btn-hover-text-color);
+    border-color: var(--btn-hover-border-color);
+    opacity: 0.95;
+}
+
+.status {
+    min-height: 1.5rem;
+    font-size: calc(var(--font-size) - 2px);
+    margin-top: 0.25rem;
+}
+
+.statusOk { color: var(--status-ok-color); }
+.statusError { color: var(--status-error-color); }
+
+.honeypot {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+}
+
+.withDecorativeX {
+    position: relative;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.decorativeXTop,
+.decorativeXBottom {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.5rem;
+    font-weight: 300;
+    color: var(--decorative-x-color, currentColor);
+    opacity: 1;
+    pointer-events: none;
+    background-color: var(--wrapper-bg-color, transparent);
+    padding: 0 0.3rem;
+    line-height: 1;
+    z-index: 1;
+}
+
+.decorativeXTop {
+    top: 0;
+    transform: translate(-50%, -50%);
+}
+
+.decorativeXBottom {
+    bottom: 0;
+    transform: translate(-50%, 50%);
+}

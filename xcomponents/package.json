@@ -1,0 +1,86 @@
+{
+  "name": "@xscriptor/xcomponents",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Reusable React/Next.js UI components by Xscriptor.",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "SECURITY.md"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.mjs",
+      "require": "./dist/components/index.js"
+    },
+    "./forms": {
+      "types": "./dist/components/forms/index.d.ts",
+      "import": "./dist/components/forms/index.mjs",
+      "require": "./dist/components/forms/index.js"
+    },
+    "./navigation": {
+      "types": "./dist/components/navigation/index.d.ts",
+      "import": "./dist/components/navigation/index.mjs",
+      "require": "./dist/components/navigation/index.js"
+    },
+    "./layout": {
+      "types": "./dist/components/layout/index.d.ts",
+      "import": "./dist/components/layout/index.mjs",
+      "require": "./dist/components/layout/index.js"
+    },
+    "./content": {
+      "types": "./dist/components/content/index.d.ts",
+      "import": "./dist/components/content/index.mjs",
+      "require": "./dist/components/content/index.js"
+    },
+    "./gallery": {
+      "types": "./dist/components/gallery/index.d.ts",
+      "import": "./dist/components/gallery/index.mjs",
+      "require": "./dist/components/gallery/index.js"
+    },
+    "./social": {
+      "types": "./dist/components/social/index.d.ts",
+      "import": "./dist/components/social/index.mjs",
+      "require": "./dist/components/social/index.js"
+    }
+  },
+  "peerDependencies": {
+    "framer-motion": ">=11",
+    "next": ">=14",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.16",
+    "@types/react-dom": "^18.3.5",
+    "framer-motion": "^11.15.0",
+    "next": "^15.1.3",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
+  },
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist",
+    "prepare:build": "npm run clean && npm run build",
+    "prepublishOnly": "npm run prepare:build"
+  }
+}

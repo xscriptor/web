@@ -1,0 +1,163 @@
+/* XNewsletter.module.css */
+
+.container {
+  /* Estas variables recibirán sus valores desde React */
+  --nws-accent: var(--accent);
+  --nws-text: var(--text);
+  --nws-border: var(--border);
+  --nws-btn-text: var(--accent-text);
+  
+  width: 100%;
+  font-family: "EB Garamond", serif;
+}
+
+/* --- Layouts Base --- */
+.form {
+  display: flex;
+  gap: 1rem;
+}
+
+.horizontal {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .horizontal {
+    flex-direction: row;
+  }
+}
+
+.vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 24rem; /* equivalente a max-w-sm */
+  margin: 0 auto;
+}
+
+/* --- Elementos --- */
+.title {
+  font-size: 0.875rem;
+  white-space: nowrap;
+  font-weight: 500;
+  color: var(--nws-text);
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--nws-border);
+  background-color: transparent;
+  outline: none;
+  transition: border-color 0.2s ease;
+  color: var(--nws-text);
+  caret-color: var(--nws-accent);
+  font-family: inherit;
+}
+
+.horizontal .input {
+  /* En escritorio, el input horizontal es de tamaño fijo (md:w-64) */
+}
+@media (min-width: 768px) {
+  .horizontal .input {
+    width: 16rem; 
+  }
+}
+
+.input:focus {
+  border-color: var(--nws-accent);
+}
+
+/* --- Checkbox y Botón --- */
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.actionsHorizontal {
+  flex-direction: row;
+  align-items: center;
+}
+
+.actionsVertical {
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--nws-text);
+}
+
+.checkboxLabel span {
+  opacity: 0.7;
+}
+
+.checkbox {
+  height: 0.875rem;
+  width: 0.875rem;
+  border-radius: 0.125rem;
+  cursor: pointer;
+  accent-color: var(--nws-accent);
+}
+
+.termsLink {
+  text-decoration: underline;
+  color: var(--nws-accent);
+  transition: opacity 0.2s ease;
+}
+
+.termsLink:hover {
+  opacity: 1;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--nws-accent);
+  color: var(--nws-accent);
+  background-color: transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  background-color: var(--nws-accent);
+  color: var(--nws-btn-text);
+}
+
+.button:disabled, .input:disabled, .checkbox:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.actionsVertical .button {
+  width: 100%;
+}
+
+/* --- Feedback Message --- */
+.message {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--nws-accent);
+}
+
+.messageHorizontal {
+  text-align: center;
+}
+
+.messageVertical {
+  text-align: left;
+}

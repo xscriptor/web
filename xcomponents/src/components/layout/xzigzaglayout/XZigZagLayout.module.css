@@ -1,0 +1,63 @@
+.layout {
+  width: min(100%, 72rem);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--x-zigzag-gap, 0.5rem);
+  padding-inline: clamp(0.5rem, 2vw, 1rem);
+  position: relative; 
+}
+
+/* Nuevos estilos para el SVG de la línea */
+.svgLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.item > * {
+  width: 100%;
+  text-align: inherit;
+}
+
+/* Wrapper transparente que envuelve al child */
+.contentWrapper {
+  width: 100%;
+}
+
+.textLeft > * {
+  text-align: left;
+}
+
+.textRight > * {
+  text-align: right;
+}
+
+.left > * {
+  grid-column: 2 / 8;
+}
+
+.right > * {
+  grid-column: 6 / 12;
+}
+
+@media (max-width: 768px) {
+  /* En lugar de ocupar las 12 columnas, los hacemos un poco más angostos para que sus centros se desfasen */
+  .left > * {
+    grid-column: 1 / 11;
+  }
+
+  .right > * {
+    grid-column: 3 / 13;
+  }
+}

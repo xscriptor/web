@@ -1,0 +1,52 @@
+.XFooter {
+  width: 100%;
+  background-color: var(--xf-bg, transparent);
+  color: var(--xf-text, #333);
+  padding: var(--xf-py, 0.9rem) 0.6rem;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem; /* Espacio entre los links y el copyright */
+}
+
+/* El nav es el que maneja las columnas de los links */
+.nav {
+  display: grid;
+  gap: 0.5rem 1.5rem;  
+  grid-template-columns: repeat(var(--xf-cols, 1), minmax(0, auto));
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.navVertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.link {
+  color: var(--xf-accent, inherit);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: opacity 0.2s;
+  white-space: nowrap; /* Evita que los links se rompan en dos líneas */
+}
+
+.link:hover {
+  opacity: 0.7;
+}
+
+/* El copyright siempre irá al final y centrado por el flex del .container */
+.copyright {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  width: 100%;
+  text-align: center;
+}

@@ -1,0 +1,85 @@
+.separatorContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  /* Variables para la X con fallbacks */
+  --x-color: var(--separator-color); 
+  --x-bg: white;
+}
+
+.iconWrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--x-bg);
+  padding: 0 10px;
+  
+  /* Aplicamos el color dinámico */
+  color: var(--x-color);
+  
+  font-family: system-ui, sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 1;
+  user-select: none;
+}
+
+.separator {
+  --separator-color: #e2e8f0;
+  --separator-thickness: 1px;
+  --separator-margin: 1rem;
+  
+  border: 0;
+  background-color: var(--separator-color);
+}
+
+/* Variantes de Estilo */
+.dashed {
+  background-color: transparent !important;
+  border-bottom: var(--separator-thickness) dashed var(--separator-color);
+}
+
+.dotted {
+  background-color: transparent !important;
+  border-bottom: var(--separator-thickness) dotted var(--separator-color);
+}
+
+/* Efecto Desvanecido (Fading) */
+/* Usamos mask-image para que funcione con cualquier color de fondo */
+.faded {
+  mask-image: linear-gradient(
+    to right, 
+    transparent, 
+    black 20%, 
+    black 80%, 
+    transparent
+  );
+}
+
+/* Ajuste para desvanecido vertical */
+.vertical.faded {
+  mask-image: linear-gradient(
+    to bottom, 
+    transparent, 
+    black 20%, 
+    black 80%, 
+    transparent
+  );
+}
+
+.horizontal {
+  width: 100%;
+  height: var(--separator-thickness);
+  margin: var(--separator-margin) 0;
+}
+
+.vertical {
+  width: var(--separator-thickness);
+  height: 100%;
+  display: inline-block;
+  margin: 0 var(--separator-margin);
+  vertical-align: middle;
+}

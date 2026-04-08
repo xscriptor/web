@@ -1,22 +1,22 @@
-# web workspace
+# web
 
-Repositorio de trabajo para construir y madurar librerias web antes de publicarlas.
+Under active development.
 
-## Estructura recomendada
+This repository is the main workspace for building and evolving Xscriptor web libraries.
 
-- `xcomponents/`: libreria en desarrollo de componentes React/Next.
-- `icons/xsvg/`: fuente de SVG crudos para generar iconos reutilizables.
-- `react/`: area de pruebas y playground para validar componentes.
-- `components/`: reservado para futuras librerias o migraciones.
+## Current packages
 
-## Convenciones
+- xcomponents: reusable React/Next.js component library
 
-- Cada libreria vive en su propia carpeta raiz.
-- Todo componente reusable debe exponer `index.ts` por nivel.
-- Los assets fuente viven fuera de `src` y se transforman por scripts.
-- No publicar paquetes hasta que esten marcados como estables.
+## Repository status
 
-## Estado actual
+- Architecture and packaging are actively evolving.
+- Documentation and contribution standards are in place.
+- Breaking changes can happen between iterations.
 
-- `xcomponents` esta en modo desarrollo (package private).
-- Los iconos TSX se generan automaticamente desde `icons/xsvg`.
+## Community and policies
+
+- Contributing guide: ./CONTRIBUTING.md
+- Code of Conduct: ./CODE_OF_CONDUCT.md
+- Security policy: ./SECURITY.md
+- License: ./LICENSE

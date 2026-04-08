@@ -47,6 +47,7 @@ npm install @xscriptor/xcomponents
 <h2 id="usage">Usage</h2>
 
 ```tsx
+import "@xscriptor/xcomponents/styles.css";
 import { XNavbar, XSeparator } from "@xscriptor/xcomponents";
 import { XContactForm } from "@xscriptor/xcomponents/forms";
 import { XSocialContact, XInstagramIcon } from "@xscriptor/xcomponents/social";

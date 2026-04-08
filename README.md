@@ -19,7 +19,7 @@
 
 <ul>
   <li>
-    <code>xcomponents</code>: 
+    <a href="https://github.com/xscriptor/web/tree/dev/xcomponents"><code>xcomponents</code></a>: 
     <em>reusable React/Next.js component library</em>
   </li>
 </ul>

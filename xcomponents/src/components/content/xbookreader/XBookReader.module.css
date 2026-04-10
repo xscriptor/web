@@ -1,0 +1,77 @@
+.readerContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.bookContent {
+  flex-grow: 1;
+  animation: fadeSlideIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.poemWrapper {
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.poemWrapper p {
+  line-height: 2 !important;
+  font-size: 1.15rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 5rem;
+  padding: 2rem 0;
+  border-top: 1px dashed var(--accent, #ab865d);
+}
+
+.pageButton {
+  background: transparent;
+  border: 1px solid var(--accent, #ab865d);
+  color: var(--text, #cbcbcb);
+  padding: 0.6rem 1.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.pageButton:hover:not(:disabled) {
+  background: var(--accent, #ab865d);
+  color: var(--bg, #000);
+}
+
+.pageButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: rgba(171, 134, 93, 0.3);
+}
+
+.pageIndicator {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text, #cbcbcb);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}

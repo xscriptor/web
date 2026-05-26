@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { XInteractivePhrase, XZigZagLayout } from "@xscriptor/xcomponents";
-import type { WordConfig } from "@xscriptor/xcomponents/content";
+import { XInteractivePhrase } from "../xinteractivephrase";
+import type { WordConfig } from "../xinteractivephrase";
+import { XZigZagLayout } from "../../layout/xzigzaglayout";
 
 import styles from "./XBookReader.module.css";
 

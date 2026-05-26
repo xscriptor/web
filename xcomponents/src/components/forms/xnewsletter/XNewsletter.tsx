@@ -8,6 +8,7 @@ export interface XNewsletterProps {
   title?: string;
   placeholder?: string;
   buttonText?: string;
+  loadingText?: string;
   termsText?: string;
   termsLinkText?: string;
   successMessage?: string;
@@ -29,6 +30,7 @@ export default function XNewsletter({
   title = "Recibe poesía y reflexiones",
   placeholder = "tu@email.com",
   buttonText = "Suscribirse",
+  loadingText = "Enviando...",
   termsText = "Acepto",
   termsLinkText = "términos",
   successMessage = "¡Bienvenido(a)!",
@@ -166,7 +168,7 @@ export default function XNewsletter({
             disabled={isLoading}
             className={styles.button}
           >
-            {isLoading ? "Enviando..." : buttonText}
+            {isLoading ? loadingText : buttonText}
           </button>
         </div>
       </form>

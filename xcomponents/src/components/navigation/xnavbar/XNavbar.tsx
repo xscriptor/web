@@ -95,6 +95,16 @@ export type XNavbarProps = {
   labelDark?: string;
   /** Texto del botón de tema claro en menú móvil. Default: "Claro" */
   labelLight?: string;
+  /** aria-label del <nav> desktop. Default: "Navegación principal" */
+  navLabel?: string;
+  /** aria-label del menú mobile overlay. Default: "Menú de navegación" */
+  menuLabel?: string;
+  /** Prefijo del aria-label en cada link. Default: "Ir a " */
+  linkLabelPrefix?: string;
+  /** Función que retorna el aria-label del logo (theme-toggle). Recibe el tema actual. Default: built-in Spanish */
+  themeToggleAriaLabel?: (theme: "light" | "dark") => string;
+  /** Función que retorna el title del logo (theme-toggle). Recibe el tema actual. Default: built-in Spanish */
+  themeToggleTitle?: (theme: "light" | "dark") => string;
 
   // ── Estilos adicionales ─────────────────────────────────────────────────
   /** className extra que se añade al <header> */
@@ -145,9 +155,10 @@ type NavLinkProps = {
   link: NavLinkItem;
   onClick?: () => void;
   mobile?: boolean;
+  linkLabelPrefix: string;
 };
 
-function XNavLink({ link, onClick, mobile }: NavLinkProps) {
+function XNavLink({ link, onClick, mobile, linkLabelPrefix }: NavLinkProps) {
   const pathname = usePathname();
   const isActive =
     link.url === "/" ? pathname === "/" : pathname?.startsWith(link.url);
@@ -162,7 +173,7 @@ function XNavLink({ link, onClick, mobile }: NavLinkProps) {
       onClick={onClick}
       target={link.external ? "_blank" : undefined}
       rel={link.external ? "noopener noreferrer" : undefined}
-      aria-label={`Ir a ${link.title}`}
+      aria-label={`${linkLabelPrefix}${link.title}`}
       aria-current={isActive ? "page" : undefined}
       className={[baseClass, isActive ? activeClass : "", externalClass]
         .filter(Boolean)
@@ -200,6 +211,13 @@ export default function XNavbar({
   labelClose = "Cerrar menú",
   labelDark = "Oscuro",
   labelLight = "Claro",
+  navLabel = "Navegación principal",
+  menuLabel = "Menú de navegación",
+  linkLabelPrefix = "Ir a ",
+  themeToggleAriaLabel = (t: "light" | "dark") =>
+    `Cambiar a tema ${t === "dark" ? "claro" : "oscuro"}`,
+  themeToggleTitle = (t: "light" | "dark") =>
+    t === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro",
   className,
 }: XNavbarProps) {
   const [open, setOpen] = useState(false);
@@ -268,13 +286,11 @@ export default function XNavbar({
   };
 
   const logoAriaLabel = logoAsThemeToggle
-    ? `Cambiar a tema ${theme === "dark" ? "claro" : "oscuro"}`
+    ? themeToggleAriaLabel(theme)
     : undefined;
 
   const logoTitle = logoAsThemeToggle
-    ? theme === "dark"
-      ? "Cambiar a tema claro"
-      : "Cambiar a tema oscuro"
+    ? themeToggleTitle(theme)
     : undefined;
 
   return (
@@ -284,10 +300,10 @@ export default function XNavbar({
       role="banner"
     >
       {/* ── Desktop ── */}
-      <nav className={styles.desktopNav} aria-label="Navegación principal">
+      <nav className={styles.desktopNav} aria-label={navLabel}>
         <div className={styles.desktopLinksLeft}>
           {linksLeft.map((link) => (
-            <XNavLink key={link.url + link.title} link={link} />
+            <XNavLink key={link.url + link.title} link={link} linkLabelPrefix={linkLabelPrefix} />
           ))}
         </div>
 
@@ -349,7 +365,7 @@ export default function XNavbar({
 
         <div className={styles.desktopLinksRight}>
           {linksRight.map((link) => (
-            <XNavLink key={link.url + link.title} link={link} />
+            <XNavLink key={link.url + link.title} link={link} linkLabelPrefix={linkLabelPrefix} />
           ))}
         </div>
       </nav>
@@ -400,7 +416,7 @@ export default function XNavbar({
           className={styles.mobileOverlay}
           role="dialog"
           aria-modal="true"
-          aria-label="Menú de navegación"
+          aria-label={menuLabel}
         >
           {/* Botón cerrar */}
           <button
@@ -434,6 +450,7 @@ export default function XNavbar({
                 link={link}
                 onClick={() => setOpen(false)}
                 mobile
+                linkLabelPrefix={linkLabelPrefix}
               />
             </motion.div>
           ))}

@@ -42,6 +42,28 @@ export interface XContactFormProps {
   buttonTextColor?: string;
   buttonAlignment?: "left" | "right";
 
+  // Labels de campos
+  nameLabel?: string;
+  emailLabel?: string;
+  phoneLabel?: string;
+  subjectLabel?: string;
+  messageLabel?: string;
+
+  // Label y name del honeypot
+  honeypotLabel?: string;
+  honeypotName?: string;
+
+  // Texto del botón submit
+  submitText?: string;
+
+  // Asunto por defecto si no se muestra el campo subject
+  defaultSubject?: string;
+
+  // Prefijos en el cuerpo del mail
+  bodyNamePrefix?: string;
+  bodyEmailPrefix?: string;
+  bodyPhonePrefix?: string;
+
   // Mensajes de estado
   requiredFieldsMessage?: string;
   honeypotMessage?: string;
@@ -88,6 +110,18 @@ export default function XContactForm({
   buttonHoverBorderColor,
   buttonTextColor,
   buttonAlignment = "left",
+  nameLabel = "Nombre",
+  emailLabel = "Email",
+  phoneLabel = "Teléfono",
+  subjectLabel = "Asunto",
+  messageLabel = "Mensaje",
+  honeypotLabel = "Tu web",
+  honeypotName = "website",
+  submitText = "Enviar",
+  defaultSubject = "Contacto desde web",
+  bodyNamePrefix = "Nombre: ",
+  bodyEmailPrefix = "Email: ",
+  bodyPhonePrefix = "Teléfono: ",
   requiredFieldsMessage = "Rellena los campos obligatorios.",
   honeypotMessage = "Gracias.",
   submitSuccessMessage = "Abriendo tu aplicación de correo…",
@@ -117,8 +151,8 @@ export default function XContactForm({
     const email = showEmail ? String(fd.get("email") || "").trim() : "";
     const phone = showPhone ? String(fd.get("phone") || "").trim() : "";
     const subject = showSubject
-      ? String(fd.get("subject") || "Contacto desde web").trim()
-      : "Contacto desde web";
+      ? String(fd.get("subject") || defaultSubject).trim()
+      : defaultSubject;
     const message = showMessage ? String(fd.get("message") || "").trim() : "";
 
     if (
@@ -132,9 +166,9 @@ export default function XContactForm({
     }
 
     const bodyLines = [];
-    if (showName) bodyLines.push(`Nombre: ${name}`);
-    if (showEmail) bodyLines.push(`Email: ${email}`);
-    if (showPhone) bodyLines.push(`Teléfono: ${phone}`);
+    if (showName) bodyLines.push(`${bodyNamePrefix}${name}`);
+    if (showEmail) bodyLines.push(`${bodyEmailPrefix}${email}`);
+    if (showPhone) bodyLines.push(`${bodyPhonePrefix}${phone}`);
     bodyLines.push("");
     if (showMessage) bodyLines.push(message);
 
@@ -190,27 +224,27 @@ export default function XContactForm({
       {decorativeX && <div className={styles.decorativeXTop}>✕</div>}
       <form onSubmit={onSubmit} className={`${styles.form} ${styles[layout]}`} noValidate>
         <div className={styles.honeypot} aria-hidden="true">
-          <label htmlFor="website">Tu web</label>
-          <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+          <label htmlFor="website">{honeypotLabel}</label>
+          <input id="website" name={honeypotName} type="text" tabIndex={-1} autoComplete="off" />
         </div>
 
         {(showName || showEmail || showPhone) && (
           <div className={styles.row}>
             {showName && (
               <div className={styles.field}>
-                <label htmlFor="name">Nombre</label>
+                <label htmlFor="name">{nameLabel}</label>
                 <input id="name" name="name" type="text" placeholder={namePlaceholder} required maxLength={80} />
               </div>
             )}
             {showEmail && (
               <div className={styles.field}>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">{emailLabel}</label>
                 <input id="email" name="email" type="email" inputMode="email" placeholder={emailPlaceholder} required />
               </div>
             )}
             {showPhone && (
               <div className={styles.field}>
-                <label htmlFor="phone">Teléfono</label>
+                <label htmlFor="phone">{phoneLabel}</label>
                 <input id="phone" name="phone" type="tel" inputMode="tel" placeholder={phonePlaceholder} required maxLength={20} />
               </div>
             )}
@@ -219,21 +253,21 @@ export default function XContactForm({
 
         {showSubject && (
           <div className={styles.field}>
-            <label htmlFor="subject">Asunto</label>
+            <label htmlFor="subject">{subjectLabel}</label>
             <input id="subject" name="subject" type="text" placeholder={subjectPlaceholder} required maxLength={120} />
           </div>
         )}
 
         {showMessage && (
           <div className={styles.field}>
-            <label htmlFor="message">Mensaje</label>
+            <label htmlFor="message">{messageLabel}</label>
             <textarea id="message" name="message" rows={6} placeholder={messagePlaceholder} required maxLength={3000} />
           </div>
         )}
 
         <div className={styles.buttoncontainer}>
           <button type="submit" className={styles.button}>
-            Enviar
+            {submitText}
           </button>
         </div>
 

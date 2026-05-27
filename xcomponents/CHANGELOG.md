@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.7] — 2026-05-27
+
+### Added
+
+- **XBookReaderIllus**: new component in `@xscriptor/xcomponents/content` — same paginated poetry reader as `XBookReader`, but supports inline images using Markdown syntax `![alt](src)` within `rawText`. Images render at the same size/styling as the cover image (`max-width: 300px`, centered, border-radius, shadow).
+
+### Changed
+
+- **docs/USAGE.md**: comprehensive usage documentation created for all 19 components with full prop tables and examples.
+
 ## [0.1.5] — 2026-05-26
 
 ### Added

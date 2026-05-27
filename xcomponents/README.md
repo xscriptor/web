@@ -57,6 +57,30 @@ import { XSocialContact, XInstagramIcon } from "@xscriptor/xcomponents/social";
 📖 See <a href="./docs/USAGE.md"><code>docs/USAGE.md</code></a> for complete component API reference, all props, and runnable examples.
 </blockquote>
 
+<h3>⚠️ <code>"use client"</code> requirement</h3>
+
+<p>Components in this package use React hooks (<code>useState</code>, <code>useEffect</code>, etc.). When consumed from a <strong>Next.js App Router Server Component</strong>, the bundled dist (<code>chunk-*.mjs</code>) does <strong>not</strong> preserve the <code>"use client"</code> directive.</p>
+
+<p>If you import a component directly in a Server Component, you'll get <code>TypeError: useState is not a function</code>.</p>
+
+<p><strong>Solutions</strong> (pick one):</p>
+
+<ol>
+   <li>
+      <p><strong>Create a <code>"use client"</code> barrel file</strong> in your project that re-exports the components you need:</p>
+      <pre lang="tsx"><code>// src/app/components/xcomponents/index.ts
+"use client";
+export { XNavbar, XFooter, XSeparator, XZigZagLayout } from "@xscriptor/xcomponents";
+export { XBookReader, XBookReaderIllus, XInteractivePhrase } from "@xscriptor/xcomponents";
+export { XContactForm, XNewsletter, XSocialContact } from "@xscriptor/xcomponents";</code></pre>
+      <p>Then import from your barrel instead of the npm direct path:</p>
+      <pre lang="tsx"><code>import { XBookReader } from "@/app/components/xcomponents";   // ok
+// instead of
+import { XBookReader } from "@xscriptor/xcomponents";         // worng breaks in Server Components</code></pre>
+   </li>
+   <li><strong>Use the component only inside <code>"use client"</code> pages or components</strong> — this works without a barrel.</li>
+</ol>
+
 <h2 id="exports">Exports</h2>
 
 <ul>

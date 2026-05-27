@@ -45,6 +45,14 @@ npm pack --dry-run
 - Prefer category barrels for exports.
 - Avoid breaking changes unless explicitly discussed.
 
+## `"use client"` directive
+
+All components that use React hooks (`useState`, `useEffect`, etc.) **must** have `"use client";` as the first line of their source file.
+
+The build tool currently merges multiple components into shared chunks (e.g. `chunk-DPBLQXCA.mjs`), which strips the `"use client"` directive from the output. This means consumers using Next.js App Router **Server Components** cannot import components directly from the npm package without wrapping them in a `"use client"` barrel.
+
+**Future improvement:** Configure the build (tsup/rollup) to preserve `"use client"` in individual output files per component, or add a post-build step that re-injects the directive into each chunk. Until then, this limitation must be documented in the README.
+
 ## Commit style
 
 Use concise, imperative commit messages, for example:

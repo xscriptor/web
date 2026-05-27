@@ -6,26 +6,29 @@
 
 ## Index
 
-- [Installation & Imports](#installation--imports)
-- [Content](#content)
-  - [XInteractivePhrase](#xinteractivephrase)
-  - [XBookReader](#xbookreader)
-  - [XBookReaderIllus](#xbookreaderillus)
-- [Forms](#forms)
-  - [XContactForm](#xcontactform)
-  - [XNewsletter](#xnewsletter)
-- [Gallery](#gallery)
-  - [XMicroGalleryText](#xmicrogallerytext)
-  - [XStaticGallery](#xstaticgallery)
-- [Layout](#layout)
-  - [XFooter](#xfooter)
-  - [XSeparator](#xseparator)
-  - [XZigZagLayout](#xzigzaglayout)
-- [Navigation](#navigation)
-  - [XNavbar](#xnavbar)
-- [Social](#social)
-  - [XSocialContact](#xsocialcontact)
-  - [XTelegramIcon, XInstagramIcon, XWhatsappIcon, XEmailIcon, XLinkedInIcon, XTwitterIcon, XGitHubIcon](#social-icons)
+- [Usage Guide — @xscriptor/xcomponents](#usage-guide--xscriptorxcomponents)
+  - [Index](#index)
+  - [Installation \& Imports](#installation--imports)
+  - [Content](#content)
+    - [XInteractivePhrase](#xinteractivephrase)
+    - [XBookReader](#xbookreader)
+    - [XBookReaderIllus](#xbookreaderillus)
+    - [XSkillNetwork](#xskillnetwork)
+  - [Forms](#forms)
+    - [XContactForm](#xcontactform)
+    - [XNewsletter](#xnewsletter)
+  - [Gallery](#gallery)
+    - [XMicroGalleryText](#xmicrogallerytext)
+    - [XStaticGallery](#xstaticgallery)
+  - [Layout](#layout)
+    - [XFooter](#xfooter)
+    - [XSeparator](#xseparator)
+    - [XZigZagLayout](#xzigzaglayout)
+  - [Navigation](#navigation)
+    - [XNavbar](#xnavbar)
+  - [Social](#social)
+    - [XSocialContact](#xsocialcontact)
+    - [Social Icons](#social-icons)
 
 ---
 
@@ -178,6 +181,77 @@ Rules for images:
 - Place `![alt text](image-url)` as its own block separated by **3+ newlines** from surrounding text
 - Images render at the same size/style as coverImage: `max-width: 300px`, centered, with border-radius and shadow
 - Images count as pagination items (same 4/5 alternation as poems)
+
+---
+
+### XSkillNetwork
+
+Interactive constellation/graph view for displaying skills or tagged nodes. Nodes are draggable, connected by SVG lines with hover highlighting, and show a compact tooltip on hover. Falls back to a grid layout on mobile (< 1024px).
+
+```tsx
+import { XSkillNetwork } from "@xscriptor/xcomponents/content";
+import type { XSkillNetworkProps, XSkillNode } from "@xscriptor/xcomponents/content";
+```
+
+**Props:**
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `skills` | `XSkillNode[]` | required | Array of nodes to display in the graph |
+| `constellationLabel` | `string` | `"constellation_view"` | Small footer label at bottom-left |
+
+**XSkillNode:**
+
+| Prop | Type | Description |
+|---|---|---|
+| `name` | `string` | Node display name |
+| `x` | `number` | Horizontal position as percentage (0-100) |
+| `y` | `number` | Vertical position as percentage (0-100) |
+| `description` | `string` | Tooltip description shown on hover |
+| `connections` | `number[]` | Array of node indices this node connects to |
+| `category` | `"frontend" \| "backend" \| "tool" \| "core"` | Determines node color (blue, green, amber, purple) |
+
+**Example:**
+
+```tsx
+const skills: XSkillNode[] = [
+  {
+    name: "TypeScript",
+    x: 50, y: 45,
+    description: "JavaScript with syntax for types",
+    connections: [1, 2, 3],
+    category: "core",
+  },
+  {
+    name: "React",
+    x: 60, y: 25,
+    description: "Library for web and native user interfaces",
+    connections: [0, 3],
+    category: "frontend",
+  },
+  {
+    name: "Node.js",
+    x: 55, y: 60,
+    description: "JavaScript runtime built on Chrome's V8",
+    connections: [0, 3],
+    category: "backend",
+  },
+  {
+    name: "X",
+    x: 50, y: 50,
+    description: "Development ecosystem",
+    connections: [0, 1, 2],
+    category: "core",
+  },
+];
+
+<XSkillNetwork
+  skills={skills}
+  constellationLabel="my-constellation"
+/>
+```
+
+The component expects CSS custom properties `--background`, `--border`, `--primary`, `--text-muted`, and `--foreground` to be defined on a parent element for correct theming.
 
 ---
 

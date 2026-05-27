@@ -4,6 +4,8 @@
 
 ### Added
 
+- **XSkillNetwork**: new component in `@xscriptor/xcomponents/content` — an interactive constellation/graph view for displaying skills or tagged nodes. Nodes are draggable, connected by SVG lines with hover highlighting, and show a compact tooltip on hover. Falls back to a grid layout on mobile (< 1024px). Accepts `skills: XSkillNode[]` and `constellationLabel?: string`.
+
 - **XBookReaderIllus**: new component in `@xscriptor/xcomponents/content` — same paginated poetry reader as `XBookReader`, but supports inline images using Markdown syntax `![alt](src)` within `rawText`. Images render at the same size/styling as the cover image (`max-width: 300px`, centered, border-radius, shadow).
 
 ### Changed

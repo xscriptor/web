@@ -1,0 +1,250 @@
+.wrapper {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .wrapper {
+    padding: 2rem;
+  }
+}
+
+.canvas {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 600px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  user-select: none;
+  transition: background 0.5s, border-color 0.5s;
+}
+
+@media (min-width: 1024px) {
+  .canvas {
+    display: block;
+  }
+}
+
+@media (min-width: 1280px) {
+  .canvas {
+    height: 700px;
+  }
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, var(--primary) 0%, transparent 70%);
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.lineDefault {
+  stroke: var(--text-muted);
+  stroke-width: 0.5;
+  transition: all 0.3s;
+}
+
+.lineActive {
+  stroke: var(--primary);
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 4px var(--primary));
+}
+
+.nodeWrapper {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  transition: opacity 0.5s;
+  z-index: 10;
+}
+
+.nodeWrapper:active {
+  cursor: grabbing;
+}
+
+.node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  transition: all 0.3s;
+}
+
+.nodeHovered {
+  transform: scale(2);
+  box-shadow: 0 0 12px;
+}
+
+.nodeDimmed {
+  opacity: 0.15;
+  transform: scale(0.75);
+}
+
+.catFrontend {
+  background: #60a5fa;
+  box-shadow-color: #60a5fa;
+}
+
+.catBackend {
+  background: #4ade80;
+  box-shadow-color: #4ade80;
+}
+
+.catTool {
+  background: #fbbf24;
+  box-shadow-color: #fbbf24;
+}
+
+.catCore {
+  background: #a78bfa;
+  box-shadow-color: #a78bfa;
+}
+
+.catDefault {
+  background: #9ca3af;
+  box-shadow-color: #9ca3af;
+}
+
+.ringFrontend,
+.ringBackend,
+.ringTool,
+.ringCore,
+.ringDefault {
+  /* reserved for future glow ring expansion */
+}
+
+.tooltip {
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5rem;
+  z-index: 20;
+  pointer-events: none;
+  background: var(--background);
+  border: 1px solid var(--border);
+  text-align: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 0.2rem 0.3rem;
+}
+
+.tooltipName {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.3rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.1rem;
+}
+
+.tooltipDesc {
+  color: var(--text-muted);
+  font-size: 0.28rem;
+  line-height: 0.4rem;
+}
+
+.label {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  transition: opacity 0.5s;
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.labelHidden {
+  opacity: 0;
+}
+
+.labelDimmed {
+  opacity: 0.05;
+}
+
+.footer {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.25rem;
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  letter-spacing: 0.2em;
+  opacity: 0.4;
+}
+
+.mobileGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .mobileGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .mobileGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobileGrid {
+    display: none;
+  }
+}
+
+.mobileCard {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--background);
+  border: 1px solid var(--border);
+  transition: border-color 0.3s;
+}
+
+.mobileDot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.mobileName {
+  color: var(--foreground);
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 1;
+  margin: 0 0 0.125rem;
+}
+
+.mobileDesc {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  line-height: 1.3;
+  margin: 0;
+}

@@ -53,6 +53,10 @@ import { XContactForm } from "@xscriptor/xcomponents/forms";
 import { XSocialContact, XInstagramIcon } from "@xscriptor/xcomponents/social";
 ```
 
+<blockquote>
+📖 See <a href="./docs/USAGE.md"><code>docs/USAGE.md</code></a> for complete component API reference, all props, and runnable examples.
+</blockquote>
+
 <h2 id="exports">Exports</h2>
 
 <ul>

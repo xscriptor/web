@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, ReactNode, CSSProperties } from "react";
+import { createPortal } from "react-dom";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -406,8 +407,8 @@ export default function XNavbar({
         </button>
       </div>
 
-      {/* ── Mobile overlay — position:fixed, sin portal, sin document.body ── */}
-      {open && (
+      {/* ── Mobile overlay — portaled a document.body para evitar stacking context issues ── */}
+      {open && typeof document !== "undefined" && createPortal(
         <motion.div
           id="xnavbar-mobile-menu"
           variants={listVariants}
@@ -417,6 +418,7 @@ export default function XNavbar({
           role="dialog"
           aria-modal="true"
           aria-label={menuLabel}
+          style={{ zIndex: 9999 } as CSSProperties}
         >
           {/* Botón cerrar */}
           <button
@@ -479,7 +481,8 @@ export default function XNavbar({
               labelLight
             )}
           </motion.button>
-        </motion.div>
+        </motion.div>,
+        document.body
       )}
     </header>
   );

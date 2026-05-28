@@ -1,10 +1,16 @@
 # Changelog
 
+## [0.1.8] — 2026-05-27
+
+### Fixed
+
+- **XNavbar**: mobile overlay now renders via a React Portal to `document.body` instead of inline in the component tree. This prevents `position: fixed` from breaking when any ancestor applies `transform`, `will-change`, or `filter` (framer-motion page transitions, CSS animations, etc.). The overlay always covers the viewport correctly regardless of parent stacking contexts.
+
+- **XSkillNetwork**: new component in `@xscriptor/xcomponents/content` — an interactive constellation/graph view for displaying skills or tagged nodes. Nodes are draggable, connected by SVG lines with hover highlighting, and show a compact tooltip on hover. Falls back to a grid layout on mobile (< 1024px). Accepts `skills: XSkillNode[]` and `constellationLabel?: string`.
+
 ## [0.1.7] — 2026-05-27
 
 ### Added
-
-- **XSkillNetwork**: new component in `@xscriptor/xcomponents/content` — an interactive constellation/graph view for displaying skills or tagged nodes. Nodes are draggable, connected by SVG lines with hover highlighting, and show a compact tooltip on hover. Falls back to a grid layout on mobile (< 1024px). Accepts `skills: XSkillNode[]` and `constellationLabel?: string`.
 
 - **XBookReaderIllus**: new component in `@xscriptor/xcomponents/content` — same paginated poetry reader as `XBookReader`, but supports inline images using Markdown syntax `![alt](src)` within `rawText`. Images render at the same size/styling as the cover image (`max-width: 300px`, centered, border-radius, shadow).
 

@@ -4,11 +4,11 @@
 
 Reusable React/Next.js component package by Xscriptor.
 
-![npm](https://xscriptor.github.io/badges/tools/npm.svg)
-![license](https://xscriptor.github.io/badges/terminal/LICENSE.svg)
-![MIT](https://xscriptor.github.io/badges/licenses/mit.svg)
-![typescript](https://xscriptor.github.io/badges/languages/typescript.svg)
-![CSS](https://xscriptor.github.io/badges/languages/css.svg)
+![npm](https://img.shields.io/npm/v/@xscriptor/xcomponents?style=flat-square&label=npm&color=ab865d)
+![license](https://img.shields.io/badge/license-MIT?style=flat-square&color=ab865d)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-15-000000?style=flat-square&logo=nextdotjs&logoColor=white)
 
 </div>
 

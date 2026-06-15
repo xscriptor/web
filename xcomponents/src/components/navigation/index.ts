@@ -5,3 +5,7 @@ export type {
   ThemeToggleIcons,
   IconRenderer,
 } from "./xnavbar";
+export { XGlassNavbar } from "./xglassnavbar";
+export type {
+  XGlassNavbarProps,
+} from "./xglassnavbar";

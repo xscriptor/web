@@ -1,0 +1,228 @@
+.readerContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.bookContent {
+  flex-grow: 1;
+  animation: fadeSlideIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sectionTitlePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 4rem 2rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text, #cbcbcb);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.poemWrapper {
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.poemWrapper p {
+  line-height: 2 !important;
+  font-size: 1.15rem;
+}
+
+.imageCenterWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.coverImage {
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.imageBlockWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.inlineImage {
+  border-radius: 12px;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 5rem;
+  padding: 2rem 0;
+  border-top: 1px dashed var(--accent, #ab865d);
+}
+
+.pageButton {
+  background: transparent;
+  border: 1px solid var(--accent, #ab865d);
+  color: var(--accent, #ab865d);
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pageButton:hover:not(:disabled) {
+  background: var(--accent, #ab865d);
+  color: var(--bg, #000);
+}
+
+.pageButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .pagination {
+    gap: 0.75rem;
+  }
+
+  .pageButton {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .pageIndicator {
+    font-size: 0.75rem;
+    gap: 0.25rem;
+  }
+
+  .pageInput {
+    width: 2.5rem;
+  }
+}
+
+.pageIndicator {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text, #cbcbcb);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pageInput {
+  width: 3.5rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--accent, #ab865d);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text, #cbcbcb);
+  font-family: inherit;
+  font-size: 0.9rem;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.pageInput:focus {
+  border-color: var(--accent, #ab865d);
+  box-shadow: 0 0 0 1px var(--accent, #ab865d);
+}
+
+.pageInput::-webkit-outer-spin-button,
+.pageInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pageInput[type=text] {
+  -moz-appearance: textfield;
+}
+
+.indexPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.indexTitle {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--accent, #ab865d);
+  margin: 0 0 2rem 0;
+  text-align: center;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.indexList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.indexEntry {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text, #cbcbcb);
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+.indexEntrySection {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--accent, #ab865d);
+  text-align: right;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.75rem;
+}
+
+.indexEntrySection:first-of-type {
+  margin-top: 0;
+}

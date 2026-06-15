@@ -4,3 +4,7 @@ export { XZigZagLayout } from "./xzigzaglayout";
 export type { XFooterProps, XFooterLink, CopyrightConfig } from "./xfooter";
 export type { XSeparatorProps } from "./xseparator";
 export type { XZigZagLayoutProps } from "./xzigzaglayout";
+export { XZigZagLayoutVideo } from "./xzigzaglayoutvideo";
+export type { XZigZagLayoutVideoProps } from "./xzigzaglayoutvideo";
+export { XMinimalFooter } from "./xminimalfooter";
+export type { XMinimalFooterProps } from "./xminimalfooter";

@@ -14,6 +14,11 @@
     - [XBookReader](#xbookreader)
     - [XBookReaderIllus](#xbookreaderillus)
     - [XSkillNetwork](#xskillnetwork)
+    - [XDecryptedText](#xdecryptedtext)
+    - [XRepoCard](#xrepocard)
+    - [XBookReaderPoems](#xbookreaderpoems)
+    - [XAsintotaReader](#xasintotareader)
+    - [XCompleteBook](#xcompletebook)
   - [Forms](#forms)
     - [XContactForm](#xcontactform)
     - [XNewsletter](#xnewsletter)
@@ -24,8 +29,11 @@
     - [XFooter](#xfooter)
     - [XSeparator](#xseparator)
     - [XZigZagLayout](#xzigzaglayout)
+    - [XZigZagLayoutVideo](#xzigzaglayoutvideo)
+    - [XMinimalFooter](#xminimalfooter)
   - [Navigation](#navigation)
     - [XNavbar](#xnavbar)
+    - [XGlassNavbar](#xglassnavbar)
   - [Social](#social)
     - [XSocialContact](#xsocialcontact)
     - [Social Icons](#social-icons)
@@ -252,6 +260,241 @@ const skills: XSkillNode[] = [
 ```
 
 The component expects CSS custom properties `--background`, `--border`, `--primary`, `--text-muted`, and `--foreground` to be defined on a parent element for correct theming.
+
+---
+
+### XDecryptedText
+
+Text scrambling animation on hover or in-view. Reveals characters sequentially or simultaneously.
+
+```tsx
+import { XDecryptedText } from "@xscriptor/xcomponents/content";
+import type { XDecryptedTextProps } from "@xscriptor/xcomponents/content";
+```
+
+**Props (extends `HTMLMotionProps<'span'>`):**
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `text` | `string` | required | Text to scramble |
+| `speed` | `number` | `50` | Interval in ms per iteration |
+| `maxIterations` | `number` | `10` | Max shuffle iterations per char |
+| `sequential` | `boolean` | `false` | Reveal one char at a time |
+| `revealDirection` | `"start" \| "end" \| "center"` | `"start"` | Reveal order |
+| `useOriginalCharsOnly` | `boolean` | `false` | Only shuffle original chars |
+| `characters` | `string` | alphanumeric + symbols | Scramble pool |
+| `className` | `string` | `""` | Revealed char class |
+| `encryptedClassName` | `string` | `""` | Scrambled char class |
+| `parentClassName` | `string` | `""` | Wrapper class |
+| `animateOn` | `"view" \| "hover"` | `"hover"` | Trigger |
+
+**Example:**
+
+```tsx
+<XDecryptedText
+  text="Mensaje secreto"
+  sequential
+  revealDirection="center"
+  animateOn="view"
+  speed={30}
+/>
+```
+
+---
+
+### XRepoCard
+
+Animated card with title, hover overlay description, and optional icon.
+
+```tsx
+import { XRepoCard } from "@xscriptor/xcomponents/content";
+import type { XRepoCardProps, XRepoCardColors } from "@xscriptor/xcomponents/content";
+```
+
+**Props:**
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `title` | `string` | required | Card title |
+| `description` | `string` | required | Description shown on hover |
+| `href` | `string` | required | Link URL |
+| `icon` | `ReactNode` | — | Optional icon (top-right) |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Card size |
+| `align` | `"left" \| "center"` | `"center"` | Content alignment |
+| `colors` | `XRepoCardColors` | — | Color overrides |
+| `animationDelay` | `number` | `0` | framer-motion delay (s) |
+| `openInNewTab` | `boolean` | — | Force new tab |
+| `external` | `boolean` | auto | Treat as external link |
+| `minHeight` | `CSSProperties["minHeight"]` | `"12rem"` | Min height |
+| `borderRadius` | `CSSProperties["borderRadius"]` | `"1rem"` | Border radius |
+
+**XRepoCardColors:**
+
+| Prop | Type | Default |
+|---|---|---|
+| `background` | `string` | `var(--card-bg)` |
+| `border` | `string` | `var(--border)` |
+| `hoverBorder` | `string` | `var(--primary)` |
+| `foreground` | `string` | `var(--foreground)` |
+| `primary` | `string` | `var(--primary)` |
+| `muted` | `string` | `var(--text-muted)` |
+| `overlayBackground` | `string` | `color-mix(in srgb, var(--background) 95%, transparent)` |
+| `gradientEnd` | `string` | `color-mix(in srgb, var(--background) 50%, transparent)` |
+| `shadow` | `string` | `var(--card-shadow)` |
+
+**Example:**
+
+```tsx
+<XRepoCard
+  title="xcomponents"
+  description="Reusable React/Next.js UI components"
+  href="https://github.com/xscriptor/xcomponents"
+  icon={<svg>...</svg>}
+  size="lg"
+  animationDelay={0.2}
+/>
+```
+
+---
+
+### XBookReaderPoems
+
+Advanced poetry reader with section index, poem reordering, and multi-locale support. Parses raw text with section titles (TACTO, TRANSFUSIONES, etc.) and renders poems in a zigzag layout.
+
+```tsx
+import { XBookReaderPoems } from "@xscriptor/xcomponents/content";
+import type { XBookReaderPoemsProps } from "@xscriptor/xcomponents/content";
+```
+
+**Props:**
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `rawText` | `string` | required | Raw text with poems and index |
+| `coverImage` | `string` | — | Cover image URL |
+| `locale` | `string` | `"es"` | Locale for built-in labels |
+| `labels` | `Partial<Labels>` | — | Override labels |
+| `messages` | `Record<string, Partial<Labels>>` | — | Full translations by locale |
+| `indexHeaders` | `Record<string, string>` | — | Index header text by locale |
+| `sectionNames` | `Record<string, string[]>` | — | Section names by locale |
+
+**Labels:**
+
+| Key | Default (es) | Description |
+|---|---|---|
+| `prev` | `"Anterior"` | Previous button |
+| `next` | `"Siguiente"` | Next button |
+| `pageOf` | `"Página {current} de {total}"` | Page indicator template |
+| `index` | `"Índice"` | Index page title |
+| `coverAlt` | `"Portada"` | Cover image alt text |
+
+**Example:**
+
+```tsx
+<XBookReaderPoems
+  rawText={rawBookContent}
+  coverImage="/images/portada.jpg"
+  locale="es"
+/>
+```
+
+Built-in locales: `es`, `en`, `de`. Add more via `messages`:
+
+```tsx
+<XBookReaderPoems
+  locale="fr"
+  messages={{
+    fr: {
+      prev: "Précédent",
+      next: "Suivant",
+      pageOf: "Page {current} sur {total}",
+      index: "Table des matières",
+      coverAlt: "Couverture",
+    }
+  }}
+/>
+```
+
+---
+
+### XAsintotaReader
+
+Simplified poetry reader for sections (CURVA, PLANO CARTESIANO, RECTA) with image captions and index.
+
+```tsx
+import { XAsintotaReader } from "@xscriptor/xcomponents/content";
+import type { XAsintotaReaderProps } from "@xscriptor/xcomponents/content";
+```
+
+**Props:**
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `rawText` | `string` | required | Raw text with poems and index |
+| `coverImage` | `string` | — | Cover image URL |
+| `locale` | `string` | `"es"` | Locale for built-in labels |
+| `labels` | `Partial<Labels>` | — | Override labels |
+| `messages` | `Record<string, Partial<Labels>>` | — | Full translations by locale |
+| `indexHeaders` | `Record<string, string>` | — | Index header text by locale |
+| `sectionNames` | `Record<string, string[]>` | — | Section names by locale |
+
+**Example:**
+
+```tsx
+<XAsintotaReader
+  rawText={rawBookContent}
+  coverImage="/images/asintota.jpg"
+  locale="es"
+/>
+```
+
+---
+
+### XCompleteBook
+
+Full-featured poetry reader with full-bleed background video/image, section titles, index page, and multi-locale support.
+
+```tsx
+import { XCompleteBook } from "@xscriptor/xcomponents/content";
+import type { XCompleteBookProps } from "@xscriptor/xcomponents/content";
+```
+
+**Props:**
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `rawText` | `string` | required | Raw text with poems |
+| `coverImage` | `string` | — | Cover image URL |
+| `backgroundImage` | `string` | — | Full-bleed background image |
+| `backgroundVideo` | `string` | — | Full-bleed background video |
+| `locale` | `string` | `"es"` | Locale for built-in labels |
+| `overlayColor` | `string` | `"rgba(0,0,0,0.45)"` | Overlay over background |
+| `labels` | `Partial<Labels>` | — | Override labels |
+| `messages` | `Record<string, Partial<Labels>>` | — | Full translations by locale |
+| `indexHeaders` | `Record<string, string>` | — | Index header text by locale |
+| `sectionNames` | `Record<string, string[]>` | — | Section names by locale |
+| `onPageChange` | `(page: number) => void` | — | Page change callback |
+
+**Labels:**
+
+| Key | Default (es) | Description |
+|---|---|---|
+| `prev` | `"Anterior"` | Previous button |
+| `next` | `"Siguiente"` | Next button |
+| `pageOf` | `"Página {current} de {total}"` | Page indicator template |
+| `index` | `"Índice"` | Index page title |
+
+**Example:**
+
+```tsx
+<XCompleteBook
+  rawText={rawBookContent}
+  coverImage="/images/portada.jpg"
+  backgroundVideo="/videos/book-bg.mp4"
+  locale="es"
+  onPageChange={(page) => console.log("Page:", page)}
+/>
+```
 
 ---
 
@@ -602,6 +845,80 @@ import type { XZigZagLayoutProps } from "@xscriptor/xcomponents/layout";
 
 ---
 
+### XZigZagLayoutVideo
+
+Extends `XZigZagLayout` with a full-bleed video or image background and staggered item reveal on scroll.
+
+```tsx
+import { XZigZagLayoutVideo } from "@xscriptor/xcomponents/layout";
+import type { XZigZagLayoutVideoProps } from "@xscriptor/xcomponents/layout";
+```
+
+**Props (extends `HTMLAttributes<HTMLDivElement>`):**
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `children` | `React.ReactNode` | required | Items to zigzag |
+| `startSide` | `"left" \| "right"` | `"left"` | First item side |
+| `gap` | `number \| string` | — | Space between items |
+| `offset` | `number \| string` | — | Horizontal offset per item |
+| `textAlign` | `"inherit" \| "side" \| "left" \| "right"` | `"inherit"` | Text alignment |
+| `showLine` | `boolean` | `false` | Draw SVG connecting line |
+| `lineColor` | `string` | `"#cccccc"` | Line color |
+| `lineThickness` | `number \| string` | `2` | Line thickness |
+| `videoSrc` | `string` | — | Background video URL |
+| `imageSrc` | `string` | — | Background image URL |
+| `overlayColor` | `string` | — | Overlay CSS color over media |
+
+**Example:**
+
+```tsx
+<XZigZagLayoutVideo
+  videoSrc="/videos/background.mp4"
+  overlayColor="rgba(0, 0, 0, 0.45)"
+  startSide="left"
+  showLine
+  lineColor="var(--accent)"
+>
+  <div>Contenido sobre el video</div>
+  <div>Más contenido</div>
+</XZigZagLayoutVideo>
+```
+
+---
+
+### XMinimalFooter
+
+Minimal inline footer with copyright and optional links.
+
+```tsx
+import { XMinimalFooter } from "@xscriptor/xcomponents/layout";
+import type { XMinimalFooterProps } from "@xscriptor/xcomponents/layout";
+```
+
+**Props:**
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `copyright` | `string` | required | Copyright text |
+| `links` | `{ label: string; href: string }[]` | `[]` | Optional links |
+| `className` | `string` | `""` | Extra CSS class |
+| `style` | `CSSProperties` | — | Inline styles |
+
+**Example:**
+
+```tsx
+<XMinimalFooter
+  copyright="© 2025 Xscriptor"
+  links={[
+    { label: "GitHub", href: "https://github.com/xscriptor" },
+    { label: "Twitter", href: "https://twitter.com/xscriptor" },
+  ]}
+/>
+```
+
+---
+
 ## Navigation
 
 ### XNavbar
@@ -680,6 +997,79 @@ import type { XNavbarProps, NavLinkItem, ThemeToggleIcons, IconRenderer } from "
   }}
   linkColor="var(--text)"
   linkActiveColor="var(--accent)"
+/>
+```
+
+---
+
+### XGlassNavbar
+
+Glassmorphism floating navbar with theme toggle and mobile overlay.
+
+```tsx
+import { XGlassNavbar } from "@xscriptor/xcomponents/navigation";
+import type { XGlassNavbarProps, NavLinkItem, ThemeToggleIcons, IconRenderer } from "@xscriptor/xcomponents/navigation";
+```
+
+**Props:**
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `linksLeft` | `NavLinkItem[]` | `[]` | Links left of logo (desktop) |
+| `linksRight` | `NavLinkItem[]` | `[]` | Links right of logo (desktop) |
+| `logo` | `ReactNode` | `"X"` | Central logo content |
+| `logoAsThemeToggle` | `boolean` | `true` | Logo toggles theme |
+| `onLogoClick` | `() => void` | — | Custom click handler |
+| `themeIcons` | `ThemeToggleIcons` | — | Icons for light/dark |
+| `defaultTheme` | `"light" \| "dark"` | `"light"` | Initial theme |
+| `storageKey` | `string` | `"theme"` | localStorage key |
+| `linkColor` | `string` | `"var(--text)"` | Link text color |
+| `linkHoverColor` | `string` | — | Link hover color |
+| `linkActiveColor` | `string` | `"var(--accent)"` | Active link color |
+| `iconColor` | `string` | — | Theme icon color |
+| `iconHoverColor` | `string` | — | Theme icon hover color |
+| `iconSize` | `number` | `22` | Icon size in px |
+| `hamburgerColor` | `string` | — | Hamburger bars color |
+| `hamburgerBarWidth` | `string` | `"1.25rem"` | Hamburger bar width |
+| `hamburgerBarThickness` | `string` | `"2px"` | Hamburger bar thickness |
+| `cssVars` | `Record<string, string>` | — | Extra CSS variables |
+| `labelOpen` | `string` | `"Abrir menú"` | aria-label (closed) |
+| `labelClose` | `string` | `"Cerrar menú"` | aria-label (open) |
+| `labelDark` | `string` | `"Oscuro"` | Dark mode label |
+| `labelLight` | `string` | `"Claro"` | Light mode label |
+| `navLabel` | `string` | `"Navegación principal"` | Desktop nav aria-label |
+| `menuLabel` | `string` | `"Menú de navegación"` | Mobile overlay aria-label |
+| `linkLabelPrefix` | `string` | `"Ir a "` | Link aria-label prefix |
+| `themeToggleAriaLabel` | `(theme) => string` | built-in | Logo aria-label fn |
+| `themeToggleTitle` | `(theme) => string` | built-in | Logo title fn |
+| `className` | `string` | `""` | Extra class |
+
+**NavLinkItem** (same as XNavbar):
+
+| Prop | Type | Description |
+|---|---|---|
+| `url` | `string` | Route URL |
+| `title` | `string` | Visible text |
+| `external?` | `boolean` | Opens in new tab |
+| `showExternalIcon?` | `boolean` | Show `↗` indicator |
+
+**Example:**
+
+```tsx
+<XGlassNavbar
+  linksLeft={[
+    { url: "/", title: "Inicio" },
+    { url: "/blog", title: "Blog" },
+  ]}
+  linksRight={[
+    { url: "/contacto", title: "Contacto" },
+    { url: "https://github.com/xscriptor", title: "GitHub", external: true },
+  ]}
+  logo="X"
+  themeIcons={{
+    toDark: (size) => <MoonIcon size={size} />,
+    toLight: (size) => <SunIcon size={size} />,
+  }}
 />
 ```
 

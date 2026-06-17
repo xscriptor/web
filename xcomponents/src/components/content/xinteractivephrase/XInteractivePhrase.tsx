@@ -40,7 +40,7 @@ export default function XInteractivePhrase({
 
   return (
     <div className={`${styles.container} ${className}`}>
-      <Tag className={styles.title}>
+      <Tag className={styles.title} data-xinteractive-title>
         {words.map((word, index) => {
           let dynamicClass = "";
           let clickHandler: (() => void) | undefined = undefined;
@@ -80,7 +80,7 @@ export default function XInteractivePhrase({
               >
                 {content}
               </span>
-              {word.breakAfter ? <span className={styles.lineBreak} /> : " "}
+              {word.breakAfter ? <span className={styles.lineBreak} data-xinteractive-linebreak /> : " "}
             </React.Fragment>
           );
         })}

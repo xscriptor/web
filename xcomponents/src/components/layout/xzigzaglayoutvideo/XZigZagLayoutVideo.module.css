@@ -28,7 +28,7 @@
   padding: 3rem 0;
 }
 
-.content :global(.XInteractivePhrase_title) > * {
+.content [data-xinteractive-title] > * {
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   padding: 0.1em 0.35em;
   border-radius: 0.2em;
@@ -36,7 +36,7 @@
   -webkit-box-decoration-break: clone;
 }
 
-.content :global(.XInteractivePhrase_lineBreak) {
+.content [data-xinteractive-linebreak] {
   background: transparent !important;
 }
 

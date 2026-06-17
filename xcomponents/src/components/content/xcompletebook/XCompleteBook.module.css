@@ -112,7 +112,7 @@
   width: 100%;
 }
 
-.poemBlock :global(.XInteractivePhrase_title) > * {
+.poemBlock [data-xinteractive-title] > * {
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   padding: 0.1em 0.35em;
   border-radius: 0.2em;
@@ -120,7 +120,7 @@
   -webkit-box-decoration-break: clone;
 }
 
-.poemBlock :global(.XInteractivePhrase_lineBreak) {
+.poemBlock [data-xinteractive-linebreak] {
   background: transparent !important;
 }
 

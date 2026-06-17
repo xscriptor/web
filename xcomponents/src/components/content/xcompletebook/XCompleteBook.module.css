@@ -77,6 +77,10 @@
   font-weight: 700;
   text-align: center;
   color: var(--accent);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  padding: 0.2em 0.5em;
+  border-radius: 0.2em;
+  display: inline-block;
 }
 
 .indexPage {
@@ -89,6 +93,11 @@
   text-align: center;
   font-size: 1.5rem;
   margin-bottom: 2rem;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  padding: 0.2em 0.5em;
+  border-radius: 0.2em;
+  display: inline-block;
 }
 
 .indexList {
@@ -101,11 +110,23 @@
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--accent);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  padding: 0.1em 0.35em;
+  border-radius: 0.2em;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .indexEntry {
   font-size: 0.95rem;
   padding-left: 1rem;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  padding: 0.1em 0.35em;
+  border-radius: 0.2em;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .poemBlock {
@@ -149,7 +170,7 @@
 }
 
 .pageButton {
-  background: transparent;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
   border: 1px solid var(--accent);
   color: var(--text);
   padding: 0.6rem 0.8rem;
@@ -186,12 +207,15 @@
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  padding: 0.2em 0.5em;
+  border-radius: 0.2em;
 }
 
 .pageInput {
   width: 2.5rem;
   text-align: center;
-  background: transparent;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
   border: none;
   border-bottom: 1px solid var(--accent);
   color: var(--text);

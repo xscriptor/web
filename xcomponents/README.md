@@ -54,10 +54,10 @@ import { XSocialContact, XInstagramIcon } from "@xscriptor/xcomponents/social";
 ```
 
 <blockquote>
-📖 See <a href="./docs/USAGE.md"><code>docs/USAGE.md</code></a> for complete component API reference, all props, and runnable examples.
+See <a href="./docs/USAGE.md"><code>docs/USAGE.md</code></a> for complete component API reference, all props, and runnable examples.
 </blockquote>
 
-<h3>⚠️ <code>"use client"</code> requirement</h3>
+<h3><code>"use client"</code> requirement</h3>
 
 <p>Components in this package use React hooks (<code>useState</code>, <code>useEffect</code>, etc.). When consumed from a <strong>Next.js App Router Server Component</strong>, the bundled dist (<code>chunk-*.mjs</code>) does <strong>not</strong> preserve the <code>"use client"</code> directive.</p>
 

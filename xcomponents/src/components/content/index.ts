@@ -14,3 +14,4 @@ export { XAsintotaReader } from "./xasintotareader";
 export type { XAsintotaReaderProps } from "./xasintotareader";
 export { XCompleteBook } from "./xcompletebook";
 export type { XCompleteBookProps } from "./xcompletebook";
+export { XBookFullDecrypt } from "./xbookfulldecrypt";

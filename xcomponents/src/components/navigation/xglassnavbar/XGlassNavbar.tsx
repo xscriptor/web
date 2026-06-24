@@ -167,7 +167,8 @@ export default function XGlassNavbar({
       const normalizedPath = pathname.replace(/\/$/, "");
       if (normalizedPath === normalizedUrl) return true;
       if (normalizedUrl === "") return false;
-      return normalizedPath.startsWith(normalizedUrl);
+      if (/^\/[a-z]{2}$/.test(normalizedUrl)) return false;
+      return normalizedPath.startsWith(normalizedUrl + "/");
     },
     [pathname],
   );

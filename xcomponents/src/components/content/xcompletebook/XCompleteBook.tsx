@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import XInteractivePhrase from "../xinteractivephrase/XInteractivePhrase";
 import type { WordConfig } from "../xinteractivephrase/XInteractivePhrase";
 import XZigZagLayout from "../../layout/xzigzaglayout/XZigZagLayout";
@@ -25,6 +25,7 @@ export type XCompleteBookProps = {
   indexHeaders?: Record<string, string>;
   sectionNames?: Record<string, string[]>;
   onPageChange?: (page: number) => void;
+  renderPoem?: (content: string) => ReactNode;
 };
 
 const BUILTIN_LABELS: Record<string, Labels> = {
@@ -181,6 +182,7 @@ export default function XCompleteBook({
   indexHeaders,
   sectionNames,
   onPageChange,
+  renderPoem,
 }: XCompleteBookProps) {
   const resolvedLabels = { ...BUILTIN_LABELS[locale], ...messages?.[locale], ...labels } as Labels;
   const resolvedIndexHeader = indexHeaders?.[locale] ?? BUILTIN_INDEX_HEADERS[locale] ?? "Index";
@@ -309,10 +311,12 @@ export default function XCompleteBook({
                 }
                 return (
                   <div key={index} className={styles.poemBlock}>
-                    <XInteractivePhrase
-                      words={parsePoemToWords(item.content)}
-                      as="p"
-                    />
+                    {renderPoem ? renderPoem(item.content) : (
+                      <XInteractivePhrase
+                        words={parsePoemToWords(item.content)}
+                        as="p"
+                      />
+                    )}
                   </div>
                 );
               })}

@@ -2,18 +2,12 @@
 
 Canvas-based particle background component. Particles spawn at viewport edges, drift through an organic Perlin-like flow field, and are attracted toward the mouse pointer. They die when close to the cursor (< 15px) and respawn at a random edge.
 
-## Location
-
-```
-src/app/components/xcomponents/xbackgrounds/xparticles/xparticles.tsx
-```
-
-Barrel: `src/app/components/xcomponents/xbackgrounds/index.ts` re-exports `XParticles`.
-
 ## Import
 
 ```tsx
-import { XParticles } from "../components/xcomponents/xbackgrounds";
+import { XParticles } from "@xscriptor/xbackgrounds";
+// or
+import { XParticles } from "@xscriptor/xbackgrounds/xparticles";
 ```
 
 ## Props

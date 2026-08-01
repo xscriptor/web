@@ -1,0 +1,80 @@
+{
+  "name": "@xscriptor/xbackgrounds",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Animated canvas and SVG background components for React/Next.js by Xscriptor.",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "SECURITY.md"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./xparticles": {
+      "types": "./dist/components/xparticles/index.d.ts",
+      "import": "./dist/components/xparticles/index.mjs",
+      "require": "./dist/components/xparticles/index.js"
+    },
+    "./FlowFieldBg": {
+      "types": "./dist/components/FlowFieldBg/index.d.ts",
+      "import": "./dist/components/FlowFieldBg/index.mjs",
+      "require": "./dist/components/FlowFieldBg/index.js"
+    },
+    "./FloatingPaths": {
+      "types": "./dist/components/FloatingPaths/index.d.ts",
+      "import": "./dist/components/FloatingPaths/index.mjs",
+      "require": "./dist/components/FloatingPaths/index.js"
+    },
+    "./LightLines": {
+      "types": "./dist/components/LightLines/index.d.ts",
+      "import": "./dist/components/LightLines/index.mjs",
+      "require": "./dist/components/LightLines/index.js"
+    },
+    "./TerminalBgPaths": {
+      "types": "./dist/components/TerminalBgPaths/index.d.ts",
+      "import": "./dist/components/TerminalBgPaths/index.mjs",
+      "require": "./dist/components/TerminalBgPaths/index.js"
+    },
+    "./ColorRain": {
+      "types": "./dist/components/ColorRain/index.d.ts",
+      "import": "./dist/components/ColorRain/index.mjs",
+      "require": "./dist/components/ColorRain/index.js"
+    }
+  },
+  "peerDependencies": {
+    "framer-motion": ">=11",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.16",
+    "@types/react-dom": "^18.3.5",
+    "esbuild": "^0.25.9",
+    "framer-motion": "^11.15.0",
+    "typescript": "^5.7.2"
+  },
+  "scripts": {
+    "build": "npm run clean && node ./scripts/build.mjs && npm run build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "prepare:build": "npm run build",
+    "prepublishOnly": "npm run prepare:build"
+  }
+}

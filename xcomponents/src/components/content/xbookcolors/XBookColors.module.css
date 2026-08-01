@@ -1,0 +1,294 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.bgContainer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bgMedia {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.readerContainer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.bookContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeSlideIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.coverWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.coverImage {
+  border-radius: 12px;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.sectionTitlePage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+}
+
+.sectionTitle {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 700;
+  text-align: center;
+  color: var(--c5);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  padding: 0.2em 0.5em;
+  border-radius: 0.2em;
+  display: inline-block;
+}
+
+.indexPage {
+  padding: 2rem;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.indexTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--c5);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  padding: 0.2em 0.5em;
+  border-radius: 0.2em;
+  display: inline-block;
+  width: auto;
+}
+
+.indexList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.indexEntrySection {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--c5);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  padding: 0.1em 0.35em;
+  border-radius: 0.2em;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.indexEntry {
+  font-size: 0.95rem;
+  padding-left: 1rem;
+  color: var(--text);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  padding: 0.1em 0.35em;
+  border-radius: 0.2em;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.poemBlock {
+  width: 100%;
+}
+
+.poemBlock :global(.XInteractivePhrase_title) > * {
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  padding: 0.1em 0.35em;
+  border-radius: 0.2em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.poemBlock :global(.XInteractivePhrase_lineBreak) {
+  background: transparent !important;
+}
+
+.imageBlock {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0;
+  width: 100%;
+}
+
+.inlineImage {
+  border-radius: 12px;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-top: 1px dashed var(--accent);
+}
+
+.pageButton {
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.6rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.pageButton:hover:not(:disabled) {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.pageButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: var(--border);
+}
+
+.pageIndicator {
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--text);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  padding: 0.2em 0.5em;
+  border-radius: 0.2em;
+}
+
+.pageInput {
+  width: 2.5rem;
+  text-align: center;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  border: none;
+  border-bottom: 1px solid var(--accent);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  padding: 0.1rem 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bookContent {
+    animation: none;
+  }
+}
+
+.wordBase {
+  color: var(--c-word);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  padding: 0.1em 0.35em;
+  border-radius: 0.2em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: filter 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s ease;
+}
+
+.underline {
+  position: relative;
+  cursor: pointer;
+  display: inline;
+  transition: color 0.3s ease;
+}
+
+.underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 0.15em;
+  width: 100%;
+  background: repeating-linear-gradient(
+    45deg, transparent, transparent 2px,
+    var(--c-word, var(--accent)) 2px, var(--c-word, var(--accent)) 4px
+  );
+  transition: opacity 0.3s ease;
+}
+
+.underline:hover::after {
+  opacity: 0;
+}
+
+.button {
+  display: inline;
+  padding: 0.1em 0.6em;
+  border: 2px dashed var(--c-word, var(--accent));
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background: var(--c-word, var(--accent));
+  color: var(--c0);
+}
+
+.normal {
+  display: inline;
+  color: var(--c-word);
+}
+
+.breakLine {
+  display: block;
+  height: 0.8rem;
+}

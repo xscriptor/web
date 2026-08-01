@@ -1,0 +1,71 @@
+.wordBase {
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  padding: 0.1em 0.35em;
+  border-radius: 0.2em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.underline {
+  position: relative;
+  cursor: pointer;
+  display: inline;
+  transition: color 0.3s ease;
+}
+
+.underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 0.15em;
+  width: 100%;
+  background: repeating-linear-gradient(
+    45deg, transparent, transparent 2px,
+    var(--c-word, var(--accent)) 2px, var(--c-word, var(--accent)) 4px
+  );
+  transition: opacity 0.3s ease;
+}
+
+.underline:hover::after {
+  opacity: 0;
+}
+
+.button {
+  display: inline;
+  padding: 0.1em 0.6em;
+  border: 2px dashed var(--c-word, var(--accent));
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background: var(--c-word, var(--accent));
+  color: var(--bg, #fff);
+}
+
+.normal {
+  display: inline;
+}
+
+.blur {
+  display: inline;
+  transition: filter 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s ease;
+}
+
+.blurHidden {
+  filter: blur(10px);
+  opacity: 0.3;
+  user-select: none;
+}
+
+.blurVisible {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.breakLine {
+  display: block;
+  height: 0.8rem;
+}

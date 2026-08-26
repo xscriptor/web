@@ -348,7 +348,7 @@ import type { XRepoCardProps, XRepoCardColors } from "@xscriptor/xcomponents/con
 <XRepoCard
   title="xcomponents"
   description="Reusable React/Next.js UI components"
-  href="https://github.com/xscriptor/xcomponents"
+  href="https://github.com/xscriptor-web/xcomponents"
   icon={<svg>...</svg>}
   size="lg"
   animationDelay={0.2}
@@ -911,7 +911,7 @@ import type { XMinimalFooterProps } from "@xscriptor/xcomponents/layout";
 <XMinimalFooter
   copyright="© 2025 Xscriptor"
   links={[
-    { label: "GitHub", href: "https://github.com/xscriptor" },
+    { label: "GitHub", href: "https://github.com/xscriptor-web" },
     { label: "Twitter", href: "https://twitter.com/xscriptor" },
   ]}
 />
@@ -988,7 +988,7 @@ import type { XNavbarProps, NavLinkItem, ThemeToggleIcons, IconRenderer } from "
   ]}
   linksRight={[
     { url: "/contacto", title: "Contacto" },
-    { url: "https://github.com/xscriptor", title: "GitHub", external: true },
+    { url: "https://github.com/xscriptor-web", title: "GitHub", external: true },
   ]}
   logo="X"
   themeIcons={{
@@ -1063,7 +1063,7 @@ import type { XGlassNavbarProps, NavLinkItem, ThemeToggleIcons, IconRenderer } f
   ]}
   linksRight={[
     { url: "/contacto", title: "Contacto" },
-    { url: "https://github.com/xscriptor", title: "GitHub", external: true },
+    { url: "https://github.com/xscriptor-web", title: "GitHub", external: true },
   ]}
   logo="X"
   themeIcons={{

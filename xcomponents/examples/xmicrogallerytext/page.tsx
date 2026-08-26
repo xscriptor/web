@@ -30,30 +30,30 @@ export default function Page() {
                   
                 </p>
                 <p className="">
-                  <em><a href="https://github.com/xscriptor/x" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">X </a> &middot; The definitive spin of arch linux growing as a distro.</em>
+                  <em><a href="https://github.com/xscriptor-web/x" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">X </a> &middot; The definitive spin of arch linux growing as a distro.</em>
                 </p>
                 <p className="">
-                  <strong><a href="https://github.com/xscriptor/x" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">Code X Themes </a></strong> &middot; accessibility starts from the code.
+                  <strong><a href="https://github.com/xscriptor-web/x" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">Code X Themes </a></strong> &middot; accessibility starts from the code.
                 </p>
                 <p className="">
-                  <strong><a href="https://github.com/xscriptor/xwa" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">XWA </a></strong> &middot; Our own system to <em>analyze</em> and <em>solve</em> <strong>specific needs</strong>
+                  <strong><a href="https://github.com/xscriptor-web/xwa" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">XWA </a></strong> &middot; Our own system to <em>analyze</em> and <em>solve</em> <strong>specific needs</strong>
                 </p>
                 <p><em>for any kind of project.</em></p>
                 <p><em>
-                  <a href="https://github.com/xscriptor/xpm" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">XPM </a> &middot; The future package manager of X and
-                  <a href="https://github.com/xscriptor/x" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline"> XPKG</a> &middot; The definitive packaging tool for developers in X.
+                  <a href="https://github.com/xscriptor-web/xpm" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">XPM </a> &middot; The future package manager of X and
+                  <a href="https://github.com/xscriptor-web/x" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline"> XPKG</a> &middot; The definitive packaging tool for developers in X.
                 </em></p>
                 <p>
-                  <a href="https://github.com/xscriptor/xfetch" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">Xfetch </a> &middot; The modern alternative to <em>fastfetch</em>.
+                  <a href="https://github.com/xscriptor-web/xfetch" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">Xfetch </a> &middot; The modern alternative to <em>fastfetch</em>.
                 </p>
                 <p>
-                  <a href="https://github.com/xscriptor/jetbrains" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">X JetBrains</a> &middot; A collection of <em>themes</em> for <strong>JetBrains</strong> IDEs.
+                  <a href="https://github.com/xscriptor-web/jetbrains" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">X JetBrains</a> &middot; A collection of <em>themes</em> for <strong>JetBrains</strong> IDEs.
                 </p>
                 <p>
-                  <a href="https://github.com/xscriptor/hyprland" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">X Hyprland</a> &middot; Perfect desktop development <em>environment</em> for <strong>productivity</strong> on your <strong>own system</strong>.
+                  <a href="https://github.com/xscriptor-web/hyprland" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">X Hyprland</a> &middot; Perfect desktop development <em>environment</em> for <strong>productivity</strong> on your <strong>own system</strong>.
                 </p>
                 <p>
-                  <a href="https://github.com/xscriptor/terminal" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">X Terminal Schemes</a> &middot; Schemes to increase <em>productivity</em> on your <strong>environment</strong>.
+                  <a href="https://github.com/xscriptor-web/terminal" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">X Terminal Schemes</a> &middot; Schemes to increase <em>productivity</em> on your <strong>environment</strong>.
                 </p>
                 <p><em>Do you want to join team X or need help with some development?</em> <strong><a href="mailto:x@xscriptor.com" className="text-[var(--primary)] hover:underline">Contact me</a></strong>.
                 </p>

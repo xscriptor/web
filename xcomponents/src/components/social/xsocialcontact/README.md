@@ -43,7 +43,7 @@ export default function SocialContactExample() {
     },
     {
       id: "github",
-      href: "https://github.com/xscriptor",
+      href: "https://github.com/xscriptor-web",
       label: "GitHub",
       icon: <XGitHubIcon size="32" color="currentColor" />,
       text: "GitHub",

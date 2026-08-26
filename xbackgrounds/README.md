@@ -151,5 +151,5 @@ npm publish
 <div align="center">
 <h2>X</h2>
 
-<a href="https://dev.xscriptor.com">XWeb</a> | <a href="https://github.com/xscriptor">Profile</a>
+<a href="https://xscriptor.io">XWeb</a> | <a href="https://github.com/xscriptor-web">Profile</a>
 </div>

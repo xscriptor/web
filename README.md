@@ -10,7 +10,7 @@
 
 <p>
   This repository is the main workspace for building and evolving 
-  <a href="https://github.com/xscriptor">Xscriptor</a> web libraries.
+  <a href="https://github.com/xscriptor-web">Xscriptor</a> web libraries.
 </p>
 
 <hr />
@@ -19,7 +19,7 @@
 
 <ul>
   <li>
-    <a href="https://github.com/xscriptor/web/tree/dev/xcomponents"><code>xcomponents</code></a>: 
+    <a href="https://github.com/xscriptor-web/web/tree/dev/xcomponents"><code>xcomponents</code></a>: 
     <em>reusable React/Next.js component library</em>
   </li>
 </ul>
